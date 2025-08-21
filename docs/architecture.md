@@ -1,0 +1,3 @@
+- Frontend: Next.js (with Tailwind + TypeScript)
+- API: Next.js app/api (no separate backend yet)
+- Future: Consider backend split if needed
