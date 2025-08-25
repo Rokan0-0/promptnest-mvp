@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(uuid())
+  email      String    @unique
+  username   String?   @unique
+  name       String?
+  avatarUrl  String?
+  createdAt  DateTime  @default(now()) @db.Timestamptz(6)
+
+  prompts    Prompt[]
+  favorites  Favorite[]
+  runs       Run[]
+  activities Activity[]
+}
+
+model Prompt {
+  id          String     @id @default(uuid())
+  authorId    String
+  title       String
+  body        String
+  description String?
+  visibility  Visibility  @default(public)
+  createdAt   DateTime    @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime    @updatedAt @db.Timestamptz(6)
+  views       Int         @default(0)
+  favoritesC  Int         @default(0)
+  runsC       Int         @default(0)
+
+  author   User        @relation(fields: [authorId], references: [id])
+  tags     PromptTag[]
+  favs     Favorite[]
+  runs     Run[]
+
+  @@index([title])
+}
+
+enum Visibility {
+  public
+  unlisted
+  private
+}
+
+model Tag {
+  id      String     @id @default(uuid())
+  name    String     @unique
+  prompts PromptTag[]
+}
+
+model PromptTag {
+  promptId String
+  tagId    String
+
+  prompt   Prompt @relation(fields: [promptId], references: [id])
+  tag      Tag    @relation(fields: [tagId], references: [id])
+
+  @@id([promptId, tagId])
+  @@index([tagId])
+}
+
+model Favorite {
+  userId   String
+  promptId String
+
+  user     User   @relation(fields: [userId], references: [id])
+  prompt   Prompt @relation(fields: [promptId], references: [id])
+
+  @@id([userId, promptId])
+  @@index([promptId])
+}
+
+model Run {
+  id        String    @id @default(uuid())
+  userId    String
+  promptId  String?
+  inputVars Json?
+  modelKey  String
+  output    String?
+  latencyMs Int?
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+
+  user   User    @relation(fields: [userId], references: [id])
+  prompt Prompt? @relation(fields: [promptId], references: [id])
+
+  @@index([userId, createdAt])
+}
+
+model Activity {
+  id        String        @id @default(uuid())
+  userId    String
+  type      ActivityType
+  targetId  String?
+  createdAt DateTime       @default(now()) @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+}
+
+enum ActivityType {
+  view
+  favorite
+  create
+  run
+}
