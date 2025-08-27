@@ -4,9 +4,9 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "eslint",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
         "seed": "ts-node -P tsconfig.node.json prisma/seed.ts",
         "db:seed": "prisma db seed",
         "db:migrate": "prisma migrate dev"
