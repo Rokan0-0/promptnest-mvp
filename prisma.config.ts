@@ -1,10 +1,4 @@
 // prisma.config.ts
-import { defineConfig } from '@prisma/config';
+import { defineConfig } from '@prisma/cli';
 
-export default defineConfig({
-  seed: {
-    run: async () => {
-      await import('./prisma/seed');
-    },
-  },
-});
+export default defineConfig({});
