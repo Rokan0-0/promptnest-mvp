@@ -1,13 +1,30 @@
 import { prisma } from '@/lib/prisma'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    const result: { now: Date }[] = await prisma.$queryRaw`SELECT NOW() as now`
-    const now = result[0]?.now
-
-    return Response.json({ ok: true, now })
+    const prompts = await prisma.prompt.findMany({
+      orderBy: { createdAt: 'desc' },
+    })
+    return NextResponse.json(prompts)
   } catch (error) {
-    console.error('Health check failed:', error)
-    return Response.json({ ok: false, error: 'DB not reachable' }, { status: 500 })
+    console.error('Failed to fetch prompts:', error)
+    return NextResponse.json({ error: 'Failed to fetch prompts' }, { status: 500 })
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json()
+    const { title, content } = body
+
+    const newPrompt = await prisma.prompt.create({
+      data: { title, content },
+    })
+
+    return NextResponse.json(newPrompt, { status: 201 })
+  } catch (error) {
+    console.error('Failed to create prompt:', error)
+    return NextResponse.json({ error: 'Failed to create prompt' }, { status: 500 })
   }
 }
