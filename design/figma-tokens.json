@@ -1,0 +1,124 @@
+{
+  "colors": {
+    "primary_background": "#0f172a",
+    "surface": "#1e293b", 
+    "secondary_surface": "#334155",
+    "accent": "#3b82f6",
+    "accent2": "#8b5cf6",
+    "text_primary": "#f8fafc",
+    "text_muted": "#94a3b8",
+    "border": "#334155",
+    "success": "#22c55e",
+    "warning": "#f59e0b", 
+    "error": "#ef4444",
+    "input_background": "#1e293b",
+    "switch_background": "#334155",
+    "ring": "#3b82f6"
+  },
+  "typography": {
+    "font_family": "system-ui, sans-serif",
+    "h1": {
+      "size": "var(--text-2xl)",
+      "weight": 500,
+      "line_height": 1.5
+    },
+    "h2": {
+      "size": "var(--text-xl)", 
+      "weight": 500,
+      "line_height": 1.5
+    },
+    "h3": {
+      "size": "var(--text-lg)",
+      "weight": 500, 
+      "line_height": 1.5
+    },
+    "body": {
+      "size": "var(--text-base)",
+      "weight": 400,
+      "line_height": 1.5
+    },
+    "labels": {
+      "size": "var(--text-base)",
+      "weight": 500,
+      "line_height": 1.5
+    }
+  },
+  "spacing": {
+    "scale": "4px increments",
+    "values": ["4px", "8px", "12px", "16px", "20px", "24px", "32px", "48px", "64px"],
+    "common_usage": {
+      "component_padding": "16px (p-4) mobile, 24px (p-6) desktop",
+      "navbar_height": "64px (h-16)",
+      "sidebar_width": "256px (w-64) expanded, 64px (w-16) collapsed",
+      "bottom_nav_height": "64px (h-16)",
+      "section_margin": "24px (mb-6)"
+    }
+  },
+  "radii": {
+    "sm": "8px",
+    "md": "10px", 
+    "lg": "12px",
+    "xl": "16px",
+    "default": "12px"
+  },
+  "shadows": {
+    "note": "No explicit shadow tokens defined - using Tailwind defaults"
+  },
+  "components": {
+    "Navbar": ["All pages"],
+    "DesktopSidebar": ["Home", "Explore", "My Prompts", "Saved"],
+    "MobileBottomNav": ["Home", "Explore", "My Prompts", "Saved"], 
+    "FeedPage": ["Home", "Explore", "My Prompts", "Saved"],
+    "PromptCard": ["Home", "Explore", "My Prompts", "Saved"],
+    "PromptDetailsPage": ["Prompt Details"],
+    "CreatePromptPage": ["Create Prompt"],
+    "NotificationsPage": ["Notifications"],
+    "SettingsPage": ["Settings"],
+    "ImageWithFallback": ["Various components for images"],
+    "Button": ["All pages - various actions"],
+    "Card": ["All pages - content containers"],
+    "Input": ["Create Prompt", "Settings", "Search"],
+    "Avatar": ["Navbar", "Settings", "Prompt Cards"],
+    "Badge": ["Prompt Cards", "Notifications"],
+    "Switch": ["Settings"],
+    "Select": ["Settings", "Filters"],
+    "Textarea": ["Create Prompt", "Settings"],
+    "Separator": ["Settings", "Various layouts"],
+    "Tooltip": ["Desktop Sidebar", "Action buttons"],
+    "DropdownMenu": ["Navbar", "Prompt Cards"],
+    "Dialog": ["Create Prompt confirmations"],
+    "Sheet": ["Mobile overlays"],
+    "Skeleton": ["Loading states"],
+    "Sonner": ["Toast notifications - All pages"],
+    "Label": ["Forms - Create Prompt", "Settings"],
+    "Tabs": ["Settings sections"],
+    "Progress": ["Upload progress", "Loading states"],
+    "Checkbox": ["Settings", "Multi-select"],
+    "RadioGroup": ["Settings", "Form options"],
+    "Slider": ["Settings ranges"],
+    "Table": ["Data display - if implemented"],
+    "Calendar": ["Date pickers - if implemented"],
+    "Command": ["Search functionality"],
+    "Popover": ["Context menus", "Info displays"],
+    "HoverCard": ["User previews", "Quick info"],
+    "AlertDialog": ["Destructive actions"],
+    "Breadcrumb": ["Navigation context"],
+    "Pagination": ["Feed pagination"],
+    "ScrollArea": ["Long content lists"],
+    "Collapsible": ["Expandable sections"],
+    "Toggle": ["View options"],
+    "Accordion": ["FAQ", "Grouped content"],
+    "AspectRatio": ["Media containers"],
+    "Menubar": ["Context actions"],
+    "NavigationMenu": ["Complex navigation"],
+    "Drawer": ["Mobile sheets"],
+    "Carousel": ["Image galleries"],
+    "Chart": ["Analytics - if implemented"],
+    "ContextMenu": ["Right-click actions"],
+    "Form": ["All form pages"],
+    "InputOTP": ["Security features"],
+    "Resizable": ["Layout panels"],
+    "ToggleGroup": ["Multiple toggles"],
+    "Alert": ["System messages"]
+  }
+}
